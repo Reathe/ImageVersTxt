@@ -1,9 +1,9 @@
-int [][] ImgVersTab(int width, int height) {
-    int [][] tabLumi = new int[height][width];
-    int stepWidth=img.width/width;
-    int stepHeight=img.height/height;
-    for (int x = 0; x < width; ++x) {
-        for (int y = 0; y < height; ++y) {
+int [][] ImgVersTab(int widthAscii, int heightAscii) {
+    int [][] tabLumi = new int[heightAscii][widthAscii];
+    int stepWidth=img.width/widthAscii;
+    int stepHeight=img.height/heightAscii;
+    for (int x = 0; x < widthAscii; ++x) {
+        for (int y = 0; y < heightAscii; ++y) {
             tabLumi[y][x]=moyenneLuminosite(x*stepWidth, y*stepHeight, stepWidth, stepHeight);
         }
     }
@@ -17,7 +17,7 @@ int moyenneLuminosite(int startX, int startY, int widthSPI, int heightSPI) {
     
     for (int x = startX; x < startX+widthSPI; ++x) {
         for (int y = startY; y < startY+heightSPI; ++y) {
-            println("startX:",startX,"  x:",x,"  y:",y,"  startY:",startY,"  img.width:",img.width);
+            //println("startX:",startX,"  x:",x,"  y:",y,"  startY:",startY,"  img.width:",img.width);
             sommeLuminosite+=brightness(img.pixels[x+y*img.width]);
         }
     }
