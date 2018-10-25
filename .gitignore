@@ -1,3 +1,5 @@
 out
 *.jpg
 Result.txt
+*.autosave
+*.tmp
