@@ -14,7 +14,7 @@ int moyenneLuminosite(int startX, int startY, int widthSPI, int heightSPI) {
     //De la sous partie de l'image définie par son origine en (startX,startY)
     //Et la largeur et hauteur (widh et height) de la sous-partie de l'image
     float sommeLuminosite=0;
-    
+
     for (int x = startX; x < startX+widthSPI; ++x) {
         for (int y = startY; y < startY+heightSPI; ++y) {
             //println("startX:",startX,"  x:",x,"  y:",y,"  startY:",startY,"  img.width:",img.width);

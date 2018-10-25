@@ -1,21 +1,15 @@
 PImage img;
-void setup () {
-    int [][]tabLuminosite;
-    selectInput("Select a file to process:", "GetImage");
-    if (img!=null) {
-        println(img);
-        tabLuminosite=ImgVersTab(img.width/4, img.height/12);
-        ecrire(tabLuminosite, "@8#$d0cvj()~;:,\"` ");
-        //Normal "@8#$d0cvj()~;:,\"` "
-        //Contraste " `"\,:;~)(jvc0d$#8@"
-        //Normal "@$B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~i!lI;:,\"` "
-        //Contraste inverse  " `^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B$@"
-        println("Done");
+boolean GetImage(File selection) {
+    String fileName;
+    if (selection == null) {
+        println("Window was closed or the user hit cancel.");
+        return false;
+    } else {
+        fileName = selection.getAbsolutePath();
+        println("User selected " + fileName);
+        img=loadImage(fileName);
+        return true;
     }
-}
-void GetImage(File selection) {
-    img=loadImage(selection.getName());
-    println(img);
 }
 
 void ecrire (int [][] tab, String ascii) {
@@ -30,4 +24,27 @@ void ecrire (int [][] tab, String ascii) {
     }
     output.flush();
     output.close();
+}
+
+void setup () {
+    int [][]tabLuminosite;
+    String asciiChars="@8#$d0cvj()~;:,\"` ",asciiCharsInv=" `\",:;~)(jvc0d$#9@";
+    int timeout=0;
+    //Normal "@8#$d0cvj()~;:,\"` "
+    //inverse " `\",:;~)(jvc0d$#8@"
+    //Normal "@$B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~i!lI;:,\"` "
+    //inverse  " `^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B$@"
+    selectInput("Select a file to process:", "GetImage");
+    while (img==null & timeout<25) {
+        println("Waiting... (",timeout,")");
+        delay(1000);
+        timeout++;
+    }
+    if (img!=null) {
+        //tabLuminosite=ImgVersTab(img.width, img.height/2);
+        tabLuminosite=ImgVersTab(int(60), int(37));
+        ecrire(tabLuminosite, asciiChars);
+        println("Done.");
+    }
+    exit();
 }
