@@ -1,7 +1,7 @@
 int [][] ImgVersTab(int widthAscii, int heightAscii) {
     int [][] tabLumi = new int[heightAscii][widthAscii];
-    int stepWidth=img.width/widthAscii;
-    int stepHeight=img.height/heightAscii;
+    int stepWidth=int(1.0*img.width/widthAscii);
+    int stepHeight=int(1.0*img.height/heightAscii);
     for (int x = 0; x < widthAscii; ++x) {
         for (int y = 0; y < heightAscii; ++y) {
             tabLumi[y][x]=moyenneLuminosite(x*stepWidth, y*stepHeight, stepWidth, stepHeight);
