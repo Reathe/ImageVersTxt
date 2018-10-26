@@ -1,6 +1,6 @@
 ImageVersTxt
-Pour utiliser le programme:
-  - 
+#Pour utiliser le programme:
+# - 
 Pour voir et lancer le code :
   - Télécharger Ptocessing 3.0
   -Télécharger (ou cloner) le projet (il faut le rennomer en "ImageVersTxt")
